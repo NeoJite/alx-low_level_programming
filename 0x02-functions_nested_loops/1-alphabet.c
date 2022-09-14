@@ -2,9 +2,9 @@
 
 /**
  *
- * print_alphabet - Make the Aphabet
+ * main - Entry point
  *
- * Return: void
+ * Return: Always 0
  */
 void print_alphabet(void)
 {
