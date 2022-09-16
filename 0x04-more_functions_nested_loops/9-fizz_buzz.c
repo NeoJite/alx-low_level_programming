@@ -12,19 +12,19 @@
  */
 int main(void)
 {
-	int 1;
+	int b;
 
-	for (i = 1; i <= 100; i++)
+	for (b = 1; b <= 100; b++)
 	{
-		if (i % 15 == 0)
+		if ((b % 3 == 0) && (b % 5 == 0))
 			printf("FizzBuzz");
-		else if (i % 3 == 0)
+		else if (b % 3 == 0)
 			printf("Fizz");
-		else if (i % 5 == 0)
+		else if (b % 5 == 0)
 			printf("Buzz");
 		else
-			printf("%i", i);
-		if (i < 100)
+			printf("%i", b);
+		if (b < 100)
 			printf(" ");
 	}
 	printf("\n");
