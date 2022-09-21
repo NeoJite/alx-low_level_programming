@@ -9,18 +9,18 @@
 
 void rev_string(char *s)
 {
-	int t = 0, f, right;
+	int i = 0, j, right;
 
-	while (s[t])
-		t++;
+	while (s[i])
+		i++;
 
-	f = t / 2;
+	j = i / 2;
 	right = 0;
 
-	while (right != f)
+	while (right != j)
 	{
 		char temp = s[right];
-		int left = t - right - 1;
+		int left = i - right - 1;
 
 		s[right] = s[left];
 		s[right] = temp;
