@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * _strlen - function that return the lenght of a string
+ * * _strlen - function that return the lenght of a string
  * @s: the string
  * Return: length of s
  */
@@ -29,7 +29,8 @@ char *_strcat(char *dest, char *src)
 	int ls, ld;
 
 	ld = _strlen(dest);
-	ld = _strlen(dest);
+	ls = _strlen(src) - 1;
+
 	while (ls >= 0)
 	{
 		*(dest + ld + ls) = *(src + ls);
