@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define min(x, y) (((x) < (y)) ? (x) : (y))
+
 char *string_nconcat(char *s1, char *s2, unsigned int n);
 void *malloc_checked(unsigned int b);
 void *_calloc(unsigned int nmemb, unsigned int size);
