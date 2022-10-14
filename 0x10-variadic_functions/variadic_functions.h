@@ -22,4 +22,5 @@ typedef struct print
 	void (*T_func)(va_list);
 } t_print;
 
+
 #endif
