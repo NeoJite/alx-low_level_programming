@@ -9,17 +9,21 @@
 
 int pop_listint(listint_t **head)
 {
-	listint_t *popped;
-	int content;
+	listint_t *bread;
+	int result;
 
-
-	if (*head == NULL)
+	if (!head || !*head)
 		return (0);
 
-	popped = *head;
-	content = popped->n;
+	result = (*head)->n;
+	bread = (*head)->next;
+	(*head)->next = 0;
 
-	free(popped);
-	*head = (*head)->next;
-	return (content);
+	free(*head);
+
+	*head = bread;
+
+	return (result);
 }
+
+
