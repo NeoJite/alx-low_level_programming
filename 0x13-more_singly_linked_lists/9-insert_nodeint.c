@@ -2,64 +2,66 @@
 #include "lists.h"
 
 /**
- * insert_nodeint_at_index -  inserts a new node at a given position.
- * @head: head node
- * @idx: index pos
- * @n: new node data
- * Return: address of new node
+ * insert_nodeint_at_index - returns the nth node of a linked list
+ * @head: pointer to the head of the list
+ * @idx: index of the node to be added
+ * @n: content of the new node
+ *
+ * Return: the address of the node
  */
 
 listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 {
-	listint_t *node, *prev;
+	listint_t *new_node = NULL;
+	listint_t *previous_node = NULL;
+	unsigned int i = 0;
 
-	if (!head)
-		return (0);
-
-	if (idx == 0)
+	new_node = malloc(sizeof(listint_t));
+	if (new_node == NULL || idx > listint_len(*head))
 	{
-		node = add_nodeint(head, n);
-		return (node);
+		free(new_node);
+		return (NULL);
 	}
-
-	node = malloc(sizeof(listint_t));
-	if (!node)
-		return (0);
-	node->n = n;
-
-
-	prev = get_nodeint_at_index(*head, idx - 1);
-	if (!prev)
+	new_node->n = n;
+	new_node->next = NULL;
+	while (head != NULL)
 	{
-		free(node);
-		return (0);
+		if (i == idx)
+		{
+			if (i == 0)
+			{
+				new_node->next = *head;
+				*head = new_node;
+				return (new_node);
+			}
+			new_node->next = previous_node->next;
+			previous_node->next = new_node;
+			return (new_node);
+		}
+		else if ((i + 1) == idx)
+			previous_node = *head;
+		head = &((*head)->next);
+		i++;
 	}
-
-	node->next = prev->next;
-	prev->next = node;
-	return (node);
+	return (NULL);
 }
 
 /**
- * add_nodeint - add not at start
- * @head: head node
- * @n: new node data
- * Return: pointer to node
+ * listint_len - counts the number of nodes in a linked list
+ * @h: head of the list
  *
+ * Return: the number of elements
  */
 
-listint_t *add_nodeint(listint_t **head, const int n)
+size_t listint_len(const listint_t *h)
 {
-	listint_t *node;
+	const listint_t *cursor = h;
+	size_t count = 0;
 
-	if (!head)
-		return (0);
-
-	node = malloc(sizeof(listint_t));
-	if (!node)
-		return (0);
-	node->n = n;
-	node->next = *head;
-	*head = node;
-	return (node);
+	while (cursor != NULL)
+	{
+		count += 1;
+		cursor = cursor->next;
+	}
+	return (count);
 }
